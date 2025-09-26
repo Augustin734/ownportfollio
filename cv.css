@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+}
+
+.body {
+    background-color: antiquewhite;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+
+/* Pour le titre */
+.titre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    flex-direction: row;
+    font-size: 200%;
+}
+
+@media (max-width: 768px) {
+    .titre{
+        flex-direction: column;
+        font-size: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* Pour la vidéo */
+.bloc {
+    height: 70%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+}
+.bloc video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
+}
+.bloc::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: #00000075;
+    z-index: -99;
+}
+
+
+/*Pour la Photo interactive*/
+.photo {
+  position: relative;
+  width: 30%;
+  bottom: 0;
+}
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  border-radius: 30px;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.photo:hover .image {
+  opacity: 0.3;
+}
+.photo:hover .middle {
+  opacity: 1;
+}
+.text {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* Pour le menu de navigation */
+.menu {
+    width: 100%;
+}
+nav {
+    width: 100%;
+    margin: 0 auto;
+    background-color: antiquewhite;
+    position: sticky;
+    top: 0;   /* devient collante une fois atteinte */
+    z-index: 1000; /* au-dessus du contenu */
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+nav li {
+    flex: 1;
+    text-align: center;
+}
+nav ul::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+nav a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent; /* évite le décalage */
+    padding: 10px 0;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: orange;
+    border-bottom: 2px solid orange;
+}
+@media (max-width: 768px) {
+    nav ul {
+        justify-content: center; /* recentre les éléments */
+        gap: 10px;              /* petit espace entre les liens */
+    }
+
+    nav li {
+        flex: unset;            /* empêche de forcer la largeur */
+    }
+}
+
+
+/*Création des animations*/
+@keyframes reveal {
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/*Pour les titres de contenu*/
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    padding: 30px;
+    animation: reveal linear;
+    animation-timeline: view();
+    animation-range-start: cover 0%;
+    animation-range-end: contain 40%;
+}
+
+
+/*Pour les différentes sections*/
+.sectionpic {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;          /* hauteur minimale pour centrage vertical */
+    display: flex;
+    flex-direction: row;       /* texte à gauche, musique à droite */
+    align-items: center;       /* centre verticalement tous les enfants */
+    justify-content: center;   /* centre horizontalement l'ensemble */
+    gap: 100px;                /* espace entre texte et musique */
+    padding: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 5px white;
+}
+
+.texte,
+.musique {
+    flex: 1;                     /* chacun prend l'espace disponible */
+    max-width: 45%;              /* limite la largeur pour laisser du gap visible */
+}
+
+.texte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* centre horizontalement le texte */
+    justify-content: center;   /* centre verticalement le texte dans sa div */
+    max-width: 45%;            /* limite largeur pour voir le gap */
+    text-align: center;
+}
+
+.texte h3 {
+    color: white;
+}
+
+.texte p {
+    color: white;              /* tous les p dans texte deviennent blancs */
+}
+
+.musique {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.musique div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.musique .description p {
+    color: white;              /* tous les textes et liens de la description en blanc */
+    text-align: center;
+}
+.musique .description a {
+    color: white;              /* tous les textes et liens de la description en blanc */
+    text-align: center;
+    font-size: 170%;
+}
+
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .sectionpic {
+        flex-direction: column; /* empile texte et musique */
+        gap: 20px;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .texte,
+    .musique {
+        max-width: 100%;
+    }
+}
+
+
+/* Opacité photo */
+.sectionpic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 54%); 
+  z-index: 0;
+}
+.sectionpic > * {
+  position: relative;
+  z-index: 1;
+}
+
+/*Footer*/
+.footer {
+    display: flex;
+    padding: 30px;
+    width: 50%;
+}
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px){
+    .footer {
+        flex-direction: column;
+        gap: 50px;
+    }
+}
