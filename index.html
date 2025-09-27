@@ -210,9 +210,8 @@
             </audio>
         </div>
     </div>
-    <!-- <div style="border-radius: 100%;border-radius: solid; background-color: rgb(181, 22, 22);width: 200px; height: 200px; background-image: url('disque.png'); background-repeat: no-repeat;background-size: cover;background-position: center;"></div> -->
-    <footer class="footer">
-        <adress class="coordonnees">
+    <div class="footer">
+        <address class="coordonnees">
             <p>Fait par :</p>
             <p>Augustin Viemont</p><br>
             <p>Numéro de téléphone :</p>
@@ -220,9 +219,10 @@
             <p>Je vis actuellement au 29 Rue de Rome 13002</p><br>
             <a href="https://www.linkedin.com/in/augustin-viemont-6a1628226/">Voici mon linkdin pour plus de détail</a><br><br>
             <a href="CV.pdf" download="CV.pdf">Vous pouvez même télécharger mon cv !!</a>
-        </adress>
+            <p>Fun fact:
+            Une photo de mon chat est caché dans la page et vous pouvez cliquez sur le nom des musiciens pour accéder à leurs wiki.</p>
+        </address>
         <form action="/ma-page-de-traitement" method="post">
-            <ul>
                 <h1 style="font-size: 150%;">Contactez moi</h1><br>   
                 <label for="name">Nom et prénom :</label><br>
                 <input type="text" id="name" name="user_name" /><br><br>
@@ -233,9 +233,7 @@
                 <label for="msg">Message:</label><br>
                 <textarea id="msg" name="user_message"> Entrer votre message ici</textarea><br><br>
                 <button type="submit" onclick="sendMail()">Send</button>
-            </ul>
         </form>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>
