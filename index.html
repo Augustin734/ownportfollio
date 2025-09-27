@@ -7,14 +7,6 @@
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
-    <script type="text/javascript">
-    (function(){
-      emailjs.init({
-        publicKey: "fZ8xsY6B6VbtEf5XnSvFG",
-      });
-    })();
-    </script>
-    <script src="cv.js"></script>
 </head>
 <body class="body">
 
@@ -231,8 +223,8 @@
                 <label for="subject">Subject :</label><br>
                 <input type="subject" id="subject" name="user_subject" /><br><br>
                 <label for="msg">Message:</label><br>
-                <textarea id="msg" name="user_message"> Entrer votre message ici</textarea><br><br>
-                <button type="submit" onclick="sendMail()">Send</button>
+                <textarea id="msg" name="user_message"></textarea><br><br>
+                <button type="submit">Send</button>
         </form>
     </div>
 </body>
